@@ -1,0 +1,60 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:defaultValue="true"
+        android:key="edit_profile_image"
+        android:title="@string/pref_title_edit_profile_picture"
+        android:summary="NOTE: Not implemented!"/>
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_display_name"
+        android:key="edit_username"
+        android:inputType="textCapWords"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:selectAllOnFocus="true"
+        android:title="@string/pref_title_edit_username" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_display_name"
+        android:key="edit_first_name"
+        android:inputType="textCapWords"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:selectAllOnFocus="true"
+        android:title="@string/pref_title_edit_username" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_display_name"
+        android:key="edit_last_name"
+        android:inputType="textCapWords"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:selectAllOnFocus="true"
+        android:title="@string/pref_title_edit_username" />
+
+    <Preference
+        android:capitalize="words"
+        android:defaultValue="@string/pref_email"
+        android:inputType="textCapWords"
+        android:key="edit_email"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_title_email"/>
+
+    <Preference
+        android:key="edit_password"
+        android:title="@string/pref_title_password"
+        android:inputType="textPassword" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_phone_number"
+        android:inputType="phone"
+        android:key="edit_phone_number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_title_phone_number" />
+
+</PreferenceScreen>

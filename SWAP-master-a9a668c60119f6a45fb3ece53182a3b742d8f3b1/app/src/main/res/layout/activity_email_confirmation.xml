@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentLeft="true"
+        android:background="#03bd70" />
+
+    <TextView
+        android:id="@+id/changeEmailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="Change Email"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
+
+    <EditText
+        android:id="@+id/currentPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/newPass"
+        android:layout_alignStart="@+id/newPass"
+        android:layout_below="@+id/changeEmailTitle"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Current Password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/newPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/confirmPass"
+        android:layout_alignStart="@+id/confirmPass"
+        android:layout_below="@+id/currentPass"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="New Email Address"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:id="@+id/confirmPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newPass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Confirm Email Address"
+        android:inputType="textEmailAddress"/>
+
+    <TextView
+        android:id="@+id/passMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confirmPass"
+        android:text="Confirm your new email address"
+        android:textAlignment="center"
+        android:textColor="@color/red"/>
+
+    <Button
+        android:id="@+id/cancelButton"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/changeButton"
+        android:layout_alignBottom="@+id/changeButton"
+        android:layout_alignLeft="@+id/confirmPass"
+        android:layout_alignStart="@+id/confirmPass"
+        android:layout_marginLeft="58dp"
+        android:layout_marginStart="58dp"
+        android:text="Cancel"/>
+
+    <Button
+        android:id="@+id/changeButton"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passMessage"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/cancelButton"
+        android:layout_toRightOf="@+id/cancelButton"
+        android:text="Change"/>
+
+</RelativeLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ca.uoguelph.socs.group32.adheroics.ManageScheduleActivity">
+
+    <TextView
+        android:id="@+id/participant_name_header"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/prompt_clc_name"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/participant_name_text"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/participant_name"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/participant_name_header"
+        app:layout_constraintBottom_toTopOf="@id/add_participant_schedule"/>
+
+    <Button
+        android:id="@+id/add_participant_schedule"
+        android:layout_width="352dp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="@string/add_schedule"
+        app:layout_constraintBottom_toTopOf="@+id/remove_particpant_schedule"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/participant_name_text" />
+
+    <Button
+        android:id="@+id/remove_particpant_schedule"
+        android:layout_width="352dp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="@string/remove_schedule"
+        app:layout_constraintBottom_toTopOf="@+id/edit_particpant_schedule"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_participant_schedule" />
+
+    <Button
+        android:id="@+id/edit_particpant_schedule"
+        android:layout_width="352dp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="@string/edit_schedule"
+        app:layout_constraintBottom_toTopOf="@+id/view_particpant_schedule"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/remove_particpant_schedule" />
+
+    <Button
+        android:id="@+id/view_particpant_schedule"
+        android:layout_width="352dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:text="@string/view_schedule"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_particpant_schedule" />
+</android.support.constraint.ConstraintLayout>

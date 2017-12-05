@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="75dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/CLCGreen" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="352dp"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/edit_clc_account_privileges"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:text="@string/edit_account_privilege"/>
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/CLCGreen" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/deactivate_clc_account"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:padding="12dp"
+            android:text="@string/remove_account"/>
+
+    </LinearLayout>
+</ScrollView>

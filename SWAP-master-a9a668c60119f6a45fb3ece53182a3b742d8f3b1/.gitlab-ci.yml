@@ -1,0 +1,42 @@
+image: openjdk:8-jdk
+
+variables:
+  VERSION_TARGET_SDK: "26"
+  VERSION_BUILD_TOOLS: "26.0.2"
+  VERSION_SDK_TOOLS: "26.0.2"
+
+before_script:
+  - apt-get --quiet update --yes
+  - apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1
+  - apt-get install -qqy --no-install-recommends curl html2text openjdk-8-jdk libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 lib32z1 unzip
+  - rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  - rm -f /etc/ssl/certs/java/cacerts
+  - /var/lib/dpkg/info/ca-certificates-java.postinst configure
+  - wget --quiet https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -O /tmp/tools.zip
+  - unzip /tmp/tools.zip -d /sdk
+  - rm -v /tmp/tools.zip
+  - export ANDROID_HOME="/sdk"
+  - export PATH="${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools"
+#  - mkdir -p $ANDROID_HOME/licenses/
+#  - echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > $ANDROID_HOME/licenses/android-sdk-license
+#  - echo "84831b9409646a918e30573bab4c9c91346d8abd" > $ANDROID_HOME/licenses/android-sdk-preview-license
+  - (echo y; echo y; echo y; echo y; echo y; echo y) | $ANDROID_HOME/tools/bin/sdkmanager --licenses
+  - (echo y; echo y; echo y; echo y; echo y; echo y) | $ANDROID_HOME/tools/bin/sdkmanager "platform-tools" --verbose
+  - (echo y; echo y; echo y; echo y; echo y; echo y) | $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-${VERSION_TARGET_SDK}" --verbose
+  - (echo y; echo y; echo y; echo y; echo y; echo y) | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${VERSION_BUILD_TOOLS}" --verbose
+  - (echo y; echo y; echo y; echo y; echo y; echo y) | $ANDROID_HOME/tools/bin/sdkmanager "extras;android;m2repository" --verbose
+  - (echo y; echo y; echo y; echo y; echo y; echo y) | $ANDROID_HOME/tools/bin/sdkmanager "extras;google;m2repository" --verbose
+  - (echo y; echo y; echo y; echo y; echo y; echo y) | $ANDROID_HOME/tools/bin/sdkmanager "extras;google;google_play_services" --verbose
+  - (echo y; echo y; echo y; echo y; echo y; echo y) | $ANDROID_HOME/tools/bin/sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" --verbose
+  - (echo y; echo y; echo y; echo y; echo y; echo y) | $ANDROID_HOME/tools/bin/sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1" --verbose
+  - chmod +x ./gradlew
+
+build:
+  stage: build
+  script:
+    - ./gradlew -g /cache/.gradle clean assemble
+  allow_failure: false
+  artifacts:
+    name: "Deploy-Test_${CI_BUILD_NAME}_${CI_BUILD_REF_NAME}"
+    paths:
+    - app/build/outputs/apk/

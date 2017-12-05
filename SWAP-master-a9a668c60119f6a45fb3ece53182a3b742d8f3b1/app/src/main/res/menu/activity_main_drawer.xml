@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="Dashboard"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:id="@+id/nav_client_dashboard">
+    </item>
+    <item android:title="Account Settings"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:id="@+id/nav_client_profile_settings">
+    </item>
+    <item android:title="Settings"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:id="@+id/nav_app_settings">
+    </item>
+
+    <item android:title="Logout of CLC+"
+        android:icon="@drawable/logout"
+        android:id="@+id/nav_client_logout">
+    </item>
+
+</menu>

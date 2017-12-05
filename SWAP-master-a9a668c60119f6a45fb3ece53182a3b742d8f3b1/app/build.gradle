@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+
+def output_path_dir = System.getProperty("user.dir") + "/build-apk/"
+
+android {
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+        release {
+            storeFile file('debug.keystore')
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword 'android'
+        }
+    }
+    compileSdkVersion compileSdk
+    buildToolsVersion buildTools
+    defaultConfig {
+        applicationId "ca.uoguelph.socs.group32.adheroics"
+        minSdkVersion 16
+        targetSdkVersion targetSdk
+        versionCode 1
+        versionName "0.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
+        resConfigs "auto"
+        vectorDrawables.useSupportLibrary = true
+    }
+    applicationVariants.all { variant ->
+        def appName
+        //Check if an applicationName property is supplied; if not use the name of the parent project.
+        if (project.hasProperty("applicationName")) {
+            appName = applicationName
+        } else {
+            appName = parent.name
+        }
+
+        variant.outputs.all { output ->
+            def newApkName
+            newApkName = "${appName}-${output.baseName}-${variant.versionName}(${variant.versionCode}).apk"
+            outputFileName = newApkName  //output.outputFile.parent
+        }
+    }
+    buildTypes {
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.android.support:support-vector-drawable:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    compile 'devs.mulham.horizontalcalendar:horizontalcalendar:1.2.0'
+    compile 'com.jjoe64:graphview:4.2.1'
+    compile 'com.github.GrenderG:Toasty:1.2.5'
+    compile 'com.android.volley:volley:1.0.0'
+}
+
+task cleanExtra(type: Delete) {
+    delete output_path_dir
+}
+clean.dependsOn(cleanExtra)
